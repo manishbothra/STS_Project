@@ -1,0 +1,29 @@
+package com.example.demo.Connection;
+
+
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;;
+public class JSoup {
+	
+	
+	public static void main(String [] args) {
+		String url="";
+		try {
+			String html = "<html><head><title>Sample Title</title></head>"
+			         + "<body><p>Sample Content</p></body></html>";
+			Document js=Jsoup.parse(html);
+			System.out.println(js.title());
+			Elements e1=js.getElementsByTag("p");
+			for(Element e2:e1) {
+				System.out.println(e2.text());
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+AngularJs  Service Response Example
+
+</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script type="text/javascript">
+
+var app = angular.module('postserviceApp', []);
+
+app.controller('postserviceCtrl', function ($scope, $http) {
+
+
+
+
+$http.get('/controller/first').then(function (response) {
+
+	
+	$scope.values=response.data;
+	
+	console.log(response);
+
+	}, function (response) {
+	});
+});
+
+</script>
+
+</head>
+
+<body>
+
+<div ng-app="postserviceApp" ng-controller="postserviceCtrl">
+
+ <table style="width:100%">
+  <tr>
+    <th>Company Id</th>
+    <th>Company Name</th>
+    <th>Number of Employees</th>
+  </tr>
+  </table>
+  <table>
+  <tr>
+    <th>Jill</th>
+    <th>Smith</th>
+    <th>50</th>
+  </tr>
+  <tr>
+    <th>Eve</th>
+    <th>Jackson</th>
+    <th>94</th>
+  </tr>
+</table> 
+
+
+
+</div>
+
+</body>
+
+</html>

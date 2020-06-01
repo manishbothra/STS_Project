@@ -1,0 +1,29 @@
+package com.example.demo.Service;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.Model.User;
+import com.example.demo.Repository.UserRepository;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository repo;
+
+	public UserService(UserRepository repo) {
+		super();
+		this.repo = repo;
+	}
+	public void save(User user) {
+		
+		String s="INSERT INTO company VALUES('"+user.getComId()+"','"+user.getComName()+"','"+user.getEmp()+"')";
+		System.out.println(s);
+	}
+	public User findByComId(String comId) {
+		return repo.findByComId(comId);		
+	}
+	
+}

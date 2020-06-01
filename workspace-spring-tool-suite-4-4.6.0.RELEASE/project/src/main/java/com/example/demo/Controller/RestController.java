@@ -1,0 +1,48 @@
+package com.example.demo.Controller;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.example.demo.Service.UserService;
+import com.example.demo.model.User;
+
+
+@org.springframework.web.bind.annotation.RestController
+public class RestController {
+	
+	@Autowired
+	private UserService u;
+	
+	@PostMapping("/save-user")
+	@Transactional
+	@CrossOrigin
+	public String registerUser(@RequestBody User user) {
+		u.saveUser(user);
+		return "Hello "+user.getFirstname()+" your registration is successful"; 
+	}
+	@GetMapping("/all-users")
+	@CrossOrigin
+	public Iterable<User> showAllUsers(){
+		return u.showAllUsers();
+	}
+	
+	
+	@GetMapping("/delete-user/{username}")
+	@Transactional
+	@CrossOrigin
+	public Iterable<User> deleteByUsername(@PathVariable String username){
+		return u.deleteByUsername(username);
+	}
+	
+	@GetMapping("/find-user/{username}")
+	@CrossOrigin
+	public User findByUsername(@PathVariable String username) {
+		return u.findByUsername(username);
+	}
+}

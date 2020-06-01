@@ -1,0 +1,21 @@
+package com.example.demo.Connection;
+
+import java.util.Scanner;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+public class GetContainerData {
+	public static void main(String [] args) throws Exception {
+		CloseableHttpClient httpclient=HttpClients.createDefault();
+		HttpGet httpget=new HttpGet("https://my.dal.biz/cts#/data_eq_no/DAYU2155484");
+		HttpResponse httpresponse=httpclient.execute(httpget);
+		Scanner sc=new Scanner(httpresponse.getEntity().getContent());
+		while(sc.hasNext()) {
+			String s=sc.nextLine();
+			System.out.println(s);
+		}
+	}
+}

@@ -1,0 +1,25 @@
+package com.example.demo.Connection;
+
+import java.io.IOException;
+
+import javax.lang.model.util.Elements;
+
+import org.jsoup.Jsoup;
+
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+
+public class ANL_ContainerData_Jsoup {
+	public static void main(String [] args) throws IOException {
+		String url="https://www.anl.com.au/ebusiness/tracking/search?SearchBy=Container&Reference=FCIU3406462&search=Search"
+				+ "";
+		
+		
+		Document document=Jsoup.connect(url).get();
+		for(Element row:document.getAllElements()) {
+			System.out.println(row);
+		}
+		
+	}
+}

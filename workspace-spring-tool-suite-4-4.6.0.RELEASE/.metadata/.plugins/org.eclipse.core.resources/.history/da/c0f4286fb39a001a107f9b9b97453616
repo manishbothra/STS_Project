@@ -1,0 +1,38 @@
+package com.example.demo.Model;
+
+import javax.persistence.Entity;
+
+@Entity
+
+public class User {
+	private int com_id,num_of_emp;
+	private String com_name;
+	public int getCom_id() {
+		return com_id;
+	}
+	public void setCom_id(int com_id) {
+		this.com_id = com_id;
+	}
+	public int getNum_of_emp() {
+		return num_of_emp;
+	}
+	public void setNum_of_emp(int num_of_emp) {
+		this.num_of_emp = num_of_emp;
+	}
+	public String getCom_name() {
+		return com_name;
+	}
+	public void setCom_name(String com_name) {
+		this.com_name = com_name;
+	}
+	public User() {
+		
+	}
+	public User(int com_id, int num_of_emp, String com_name) {
+		super();
+		this.com_id = com_id;
+		this.num_of_emp = num_of_emp;
+		this.com_name = com_name;
+	}
+	
+}

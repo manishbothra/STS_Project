@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+AngularJs  Service Response Example
+
+</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script type="text/javascript">
+
+var app = angular.module('postserviceApp', []);
+
+app.controller('postserviceCtrl', function ($scope, $http) {
+
+
+
+
+$http.get('/controller/first').then(function (response) {
+
+	
+	$scope.values=response.data;
+	console.log(response);
+
+	}, function (response) {
+	});
+});
+
+</script>
+
+</head>
+
+<body>
+
+<div ng-app="postserviceApp" ng-controller="postserviceCtrl">
+
+<div>
+
+Name : <input ng-model="name" /><br/><br/>
+
+Age : <input ng-model="age" /><br/><br/>
+
+Adress : <input ng-model="adress" /><br/><br/>
+
+<input type="button" value="Send" ng-click="postdata(name, age, adress)" /> <br/><br/>
+
+</div>
+
+<p>Output Message : {{values}}</p>
+
+<p>StatusCode: {{statusval}}</p>
+
+<p>Status: {{statustext}}</p>
+
+<p>Response Headers: {{headers}}</p>
+
+</div>
+
+</body>
+
+</html>

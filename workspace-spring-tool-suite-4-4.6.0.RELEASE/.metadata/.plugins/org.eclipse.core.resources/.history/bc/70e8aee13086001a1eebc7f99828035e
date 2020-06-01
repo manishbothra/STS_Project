@@ -1,0 +1,16 @@
+package com.example.demo.Model;
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+public class Calculate {
+	Input i;
+
+	public Calculate(Input i) {
+		super();
+		this.i = i;
+	}
+	public String cal() {
+		
+	}
+}

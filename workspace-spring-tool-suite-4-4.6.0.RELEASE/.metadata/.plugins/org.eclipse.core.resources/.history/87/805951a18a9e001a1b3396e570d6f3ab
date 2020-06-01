@@ -1,0 +1,29 @@
+package com.example.demo.Connection;
+
+import java.util.*;
+import java.util.Scanner;
+
+import javax.tools.JavaFileObject;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.json.JSONObject;
+
+public class HttpGetRequestConnection {
+	
+	public static void main(String [] args)  throws Exception{
+	      CloseableHttpClient httpclient = HttpClients.createDefault();
+	      HttpGet httpget = new HttpGet("https://connect2india.com/api/login/info");
+	      HttpResponse httpresponse = httpclient.execute(httpget);
+	      System.out.println(httpresponse.getClass());
+	      Scanner sc = new Scanner(httpresponse.getEntity().getContent());
+	      Map<String,String> map=new HashMap<>();
+	      while(sc.hasNext()) {
+	    	  String s=sc.nextLine();
+	    	  JSONObject jsn=new JSONObject(s);
+	    	  System.out.println(jsn);
+	      }
+	}
+}

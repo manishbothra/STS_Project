@@ -1,0 +1,28 @@
+package com.example.demo.Service;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.Model.User;
+import com.example.demo.Repository.UserRepository;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository repo;
+
+	public UserService(UserRepository repo) {
+		super();
+		this.repo = repo;
+	}
+	public void save(User user) {
+		
+		repo.save(user);
+	}
+	public User findByComId(String comId) {
+		return repo.findByComId(comId);		
+	}
+	
+}

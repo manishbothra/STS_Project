@@ -1,0 +1,33 @@
+package com.example.demo.Connection;
+
+
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;;
+public class JSoup {
+	
+	
+	public static void main(String [] args) {
+		String url="https://www.cma-cgm.com/ebusiness/tracking/search?SearchBy=Container&Reference=TLLU4265452&search=Search";
+		try {
+			Document document=Jsoup.connect(url).get();
+			//System.out.println(document.outerHtml());
+			for(Element row:document.select("div.c-endtoend--wrapper tr")) {
+				//System.out.println(row));
+				if(row.select("js-openrow.is-header").text().equals("")) {
+					continue;
+				}
+				else {
+					String date=row.select("js-openrow.is-header").text();
+					System.out.println(date);
+				}
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

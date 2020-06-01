@@ -1,0 +1,6 @@
+applications:
+- name: Employ-App
+path: target/project-0.0.1-SNAPSHOT.jar
+domain: cfapps.io
+memory: 950M
+instances: 1

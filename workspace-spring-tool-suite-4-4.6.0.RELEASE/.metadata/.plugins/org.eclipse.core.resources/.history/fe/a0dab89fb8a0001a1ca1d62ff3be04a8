@@ -1,0 +1,19 @@
+package com.example.demo.Connection;
+
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class GetContainerData2 {
+	public static void main(String [] args) throws Exception {
+		String url="https://www.cma-cgm.com/ebusiness/tracking/search?SearchBy=Container&Reference=TLLU4265452&search=Search";
+		
+		try {
+			Document doc=Jsoup.connect(url).get();
+			System.out.println(doc.outerHtml());
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

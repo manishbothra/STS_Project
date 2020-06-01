@@ -1,0 +1,38 @@
+package com.example.demo.Connection;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;;
+public class ANL_ContainerData_Jsoup {
+	public static void main(String [] args) {
+		String url="http://esvc.kambara-kisen.co.jp/clt/CUP_HOM_3301GS.do?_search=false&nd=1590758053947&rows=10000&page=1&sidx=&sord=asc&f_cmd=121&search_type=B&search_name=KMBU4060753&cust_cd=&_=1590758053950";
+		try {
+			Document document=Jsoup.connect(url).get();
+			//System.out.println(document.outerHtml());
+			for(Element row:document.select("div.c-endtoend--wrapper tr")) {
+				//System.out.println(row));
+				if(row.select(".js-openrow.is-header").text().equals("")) {
+					//System.out.println("null");
+					continue;
+				}
+				else {
+					String date=row.select(".js-openrow.is-header").text();
+					//System.out.println(date);
+					String icon=row.select(".is-icon").text();
+					String moves=row.select(".js-openrow.is-headerdata").text();
+					String location=row.select("td:nth-of-type(4)").text();
+					String vessel=row.select("td:nth-of-type(5)").text();
+					String voyage=row.select("td:nth-of-type(6) > [href^=\"/ebusiness/schedules/voyage/detail\"]").text();
+					
+					//System.out.println(date+" "+icon+" "+moves+" "+location+" "+vessel+" "+voyage);
+					System.out.println(date+"  "+icon+"     "+moves+"     "+location+"    "+vessel+"    "+voyage);
+				}
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

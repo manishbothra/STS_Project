@@ -1,0 +1,22 @@
+package com.example.demo.Controller;
+
+import javax.transaction.Transactional;
+
+import org.springframework.web.bind.annotation.PostMapping;
+
+
+import com.example.demo.Service.UserService;
+import com.example.demo.model.User;
+
+
+@org.springframework.web.bind.annotation.RestController
+public class RestController {
+	private UserService u;
+	
+	@PostMapping("registerUser")
+	@Transactional
+	public String registerUser(User user) {
+		u.saveUser(user);
+		return "Hello "+user.getFirstname()+" your registration is successful"; 
+	}
+}

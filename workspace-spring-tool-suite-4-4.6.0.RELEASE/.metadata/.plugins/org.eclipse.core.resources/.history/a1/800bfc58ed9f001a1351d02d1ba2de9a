@@ -1,0 +1,20 @@
+package com.example.demo.Connection;
+
+import java.util.Scanner;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+public class GetContainerData1 {
+	public static void main(String [] args) throws Exception {
+		CloseableHttpClient httpclient=HttpClients.createDefault();
+		HttpGet httpget=new HttpGet("http://esvc.kambara-kisen.co.jp/clt/CUP_HOM_3301GS.do?_search=false&nd=1590564681796&rows=10000&page=1&sidx=&sord=asc&f_cmd=121&search_type=B&search_name=KMBU4060753&cust_cd=&_=1590564681797");
+		HttpResponse httpresponse=httpclient.execute(httpget);
+		Scanner sc=new Scanner(httpresponse.getEntity().getContent());
+		while(sc.hasNext()) {
+			String s=sc.nextLine();
+			System.out.println(s);
+		}
+	}
+}

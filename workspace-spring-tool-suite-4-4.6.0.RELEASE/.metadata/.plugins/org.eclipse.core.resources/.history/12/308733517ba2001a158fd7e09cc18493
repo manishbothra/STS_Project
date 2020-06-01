@@ -1,0 +1,20 @@
+package com.example.demo.Connection;
+
+import java.util.Scanner;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+public class GetContainerData2 {
+	public static void main(String [] args) throws Exception {
+		CloseableHttpClient httpclient=HttpClients.createDefault();
+		HttpGet httpget=new HttpGet("https://portexaminer.com/trade-data/paper-box-container-no-tghu9844946-paper-box-container-no-tcnu8356816/aplu052660459/");
+		HttpResponse httpresponse=httpclient.execute(httpget);
+		Scanner sc=new Scanner(httpresponse.getEntity().getContent());
+		while(sc.hasNext()) {
+			String s=sc.nextLine();
+			System.out.println(s);
+		}
+	}
+}
